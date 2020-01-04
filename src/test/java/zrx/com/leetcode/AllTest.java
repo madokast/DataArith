@@ -1,15 +1,18 @@
 package zrx.com.leetcode;
 
 import org.junit.Test;
+import zrx.com.leetcode.Q0000.Q0005LongestPalindromicSubstring;
 import zrx.com.leetcode.Q0020.*;
 import zrx.com.leetcode.Q0040.Q0042TrappingRainWater;
 import zrx.com.leetcode.Q0040.Q0053MaximumSubarray;
 import zrx.com.leetcode.Q0060.Q0061RotateList;
 import zrx.com.leetcode.Q0060.Q0075SortColors;
+import zrx.com.leetcode.Q0120.Q0121BestTimeToBuyAndSellStock;
 import zrx.com.leetcode.Q0140.Q0152MaximumProductSubarray;
 import zrx.com.leetcode.Q0180.Q0198HouseRobber;
 import zrx.com.leetcode.Q0220.Q0238ProductOfArrayExceptSelf;
 import zrx.com.leetcode.Q0620.Q0628MaximumProductOfThreeNumbers;
+import zrx.com.leetcode.Q0680.Q0697DegreeOfAnArray;
 import zrx.com.leetcode.UtilsTest.MyArrayAddOneTest;
 import zrx.com.leetcode.UtilsTest.MyStringAllIndexOfTest;
 import zrx.com.leetcode.utils.LeerCodeTest.QuestionDemo;
@@ -27,6 +30,13 @@ import zrx.com.leetcode.utils.LeerCodeTest.TestForLeetCode;
  */
 
 public class AllTest {
+    @Test
+    public void test20200104(){
+        TestForLeetCode.happy(Q0697DegreeOfAnArray.class);
+        TestForLeetCode.happy(Q0121BestTimeToBuyAndSellStock.class);
+        TestForLeetCode.happy(Q0005LongestPalindromicSubstring.class);
+    }
+
     @Test
     public void test() {
         TestForLeetCode.happy(new QuestionDemo());

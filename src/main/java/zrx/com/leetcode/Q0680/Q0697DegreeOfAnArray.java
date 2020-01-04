@@ -5,7 +5,9 @@ import zrx.com.leetcode.utils.LeerCodeTest.Input;
 import zrx.com.leetcode.utils.LeerCodeTest.Question;
 import zrx.com.leetcode.utils.MyArrayTools;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.OptionalInt;
 
 /**
  * Description
@@ -39,6 +41,9 @@ import java.util.List;
  * Data
  * 2019/12/24 14:46
  *
+ * ---------------------------------------
+ * 既然告诉了数字的范围，我的想法是计数，然后分析
+ *
  * @author zrx
  * @version 1.0
  */
@@ -59,8 +64,50 @@ public class Q0697DegreeOfAnArray implements Question {
 
     public class Solution0697 {
         public int findShortestSubArray(int[] nums) {
-            //TODO
-            return 0;
+            //计数，范围 0 and 49,999
+            int[] count = new int[50000];
+            Arrays.fill(count,0);
+
+            for (int num : nums) {
+                count[num]++;
+            }
+
+            //需要找数组 count 中最大的项，还可能有多项...
+            //首先找到最大值
+//            OptionalInt max = Arrays.stream(count).max();
+//            int maxAsInt = max.getAsInt();
+            int maxAsInt = 0;
+            for (int i : count) {
+                if(i>maxAsInt){
+                    maxAsInt = i;
+                }
+            }
+
+            //然后对所有属于这个最大值的分析
+            int minLength = nums.length;
+
+            for (int i = 0; i < count.length; i++) {
+                if(count[i]==maxAsInt){
+                    // i 出现了 maxAsInt 次，是出现次数最多的
+                    //从两边删去非 i 的数
+                    int j = 0;
+                    while (nums[j]!=i){
+                        j++;
+                    }
+                    int k = nums.length-1;
+                    while (nums[k]!=i){
+                        k--;
+                    }
+
+                    int currentLength = k-j+1;
+                    if(currentLength<minLength){
+                        minLength = currentLength;
+                    }
+                }
+            }
+
+
+            return minLength;
         }
     }
 }

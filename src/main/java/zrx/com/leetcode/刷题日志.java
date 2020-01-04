@@ -9,6 +9,7 @@ import zrx.com.leetcode.Q0040.Q0042TrappingRainWater;
 import zrx.com.leetcode.Q0040.Q0053MaximumSubarray;
 import zrx.com.leetcode.Q0060.Q0061RotateList;
 import zrx.com.leetcode.Q0060.Q0075SortColors;
+import zrx.com.leetcode.Q0120.Q0121BestTimeToBuyAndSellStock;
 import zrx.com.leetcode.Q0140.Q0152MaximumProductSubarray;
 import zrx.com.leetcode.Q0160.Q0167TwoSum2InputArrayIsSorted;
 import zrx.com.leetcode.Q0180.Q0198HouseRobber;
@@ -16,6 +17,7 @@ import zrx.com.leetcode.Q0220.Q0238ProductOfArrayExceptSelf;
 import zrx.com.leetcode.Q0440.Q0454FourSumII;
 import zrx.com.leetcode.Q0560.Q0560SubarraySumEqualsK;
 import zrx.com.leetcode.Q0620.Q0628MaximumProductOfThreeNumbers;
+import zrx.com.leetcode.Q0680.Q0697DegreeOfAnArray;
 
 /**
  * 2019年11月6日
@@ -79,10 +81,18 @@ import zrx.com.leetcode.Q0620.Q0628MaximumProductOfThreeNumbers;
  *
  * 2019年12月24日
  * 697. Degree of an Array
- *
+ * @see zrx.com.leetcode.Q0680.Q0697DegreeOfAnArray
  * 121. Best Time to Buy and Sell Stock
- *
+ * @see zrx.com.leetcode.Q0120.Q0121BestTimeToBuyAndSellStock
  * 5. Longest Palindromic Substring
+ * @see Q0005LongestPalindromicSubstring
+ *
+ * 2020年1月4日
+ * 122. Best Time to Buy and Sell Stock II
+ *
+ * 123. Best Time to Buy and Sell Stock III
+ *
+ * 188. Best Time to Buy and Sell Stock IV
  *
  */
 
@@ -102,6 +112,7 @@ public class 刷题日志 {
     private Q0053MaximumSubarray q0053MaximumSubarray;
     private Q0061RotateList q0061RotateList;
     private Q0075SortColors q0075SortColors;
+    private Q0121BestTimeToBuyAndSellStock q0121BestTimeToBuyAndSellStock;
     private Q0152MaximumProductSubarray q0152MaximumProductSubarray;
     private Q0167TwoSum2InputArrayIsSorted q0167TwoSum2InputArrayIsSorted;
     private Q0198HouseRobber q0198HouseRobber;
@@ -109,4 +120,6 @@ public class 刷题日志 {
     private Q0454FourSumII q0454FourSumII;
     private Q0560SubarraySumEqualsK q0560SubarraySumEqualsK;
     private Q0628MaximumProductOfThreeNumbers q0628MaximumProductOfThreeNumbers;
+    private Q0697DegreeOfAnArray q0697DegreeOfAnArray;
+    private Q0005LongestPalindromicSubstring q0005LongestPalindromicSubstring;
 }

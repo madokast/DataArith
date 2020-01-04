@@ -26,7 +26,7 @@ public class Test {
         new WaitTest().test();
     }
 
-    @org.junit.Test()
+    @org.junit.Test
     public void LockLearnTest(){
         LockLearn.go();
     }
