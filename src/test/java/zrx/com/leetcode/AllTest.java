@@ -8,7 +8,10 @@ import zrx.com.leetcode.Q0040.Q0053MaximumSubarray;
 import zrx.com.leetcode.Q0060.Q0061RotateList;
 import zrx.com.leetcode.Q0060.Q0075SortColors;
 import zrx.com.leetcode.Q0120.Q0121BestTimeToBuyAndSellStock;
+import zrx.com.leetcode.Q0120.Q0122BestTimeToBuyAndSellStockII;
+import zrx.com.leetcode.Q0120.Q0123BestTimeToBuyAndSellStockIII;
 import zrx.com.leetcode.Q0140.Q0152MaximumProductSubarray;
+import zrx.com.leetcode.Q0180.Q0188BestTimeToBuyAndSellStockIV;
 import zrx.com.leetcode.Q0180.Q0198HouseRobber;
 import zrx.com.leetcode.Q0220.Q0238ProductOfArrayExceptSelf;
 import zrx.com.leetcode.Q0620.Q0628MaximumProductOfThreeNumbers;
@@ -30,6 +33,13 @@ import zrx.com.leetcode.utils.LeerCodeTest.TestForLeetCode;
  */
 
 public class AllTest {
+    @Test
+    public void test20200105(){
+        TestForLeetCode.happy(Q0122BestTimeToBuyAndSellStockII.class);
+        TestForLeetCode.happy(Q0123BestTimeToBuyAndSellStockIII.class);
+        TestForLeetCode.happy(Q0188BestTimeToBuyAndSellStockIV.class);
+    }
+
     @Test
     public void test20200104(){
         TestForLeetCode.happy(Q0697DegreeOfAnArray.class);

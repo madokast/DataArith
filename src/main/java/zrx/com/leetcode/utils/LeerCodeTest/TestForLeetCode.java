@@ -127,8 +127,10 @@ public class TestForLeetCode {
         Object ret = null;
         try {
             ret = testMethod.invoke(entry.getSolution(), testMethodInput);
-        } catch (InvocationTargetException e) {
-            // 测试超时引发
+        } catch (Exception e){
+            System.out.println("testMethod = " + testMethod);
+            System.err.println("当前测试用例出现异常，测试停止:" + e.getCause().getMessage());
+            e.printStackTrace();
             return;
         }
 

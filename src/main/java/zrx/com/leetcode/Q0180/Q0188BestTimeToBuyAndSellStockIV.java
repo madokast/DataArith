@@ -5,6 +5,7 @@ import zrx.com.leetcode.utils.LeerCodeTest.Input;
 import zrx.com.leetcode.utils.LeerCodeTest.Question;
 import zrx.com.leetcode.utils.MyArrayTools;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -45,23 +46,49 @@ public class Q0188BestTimeToBuyAndSellStockIV implements Question {
     @Override
     public List<Input[]> getInputsList() {
         return Input.makeInputSet(
-                Input.InputSet.build((Object) MyArrayTools.getIntArray(2,4,1),2),
-                Input.InputSet.build((Object) MyArrayTools.getIntArray(3,2,6,5,0,3),2),
-                Input.InputSet.build((Object) MyArrayTools.getIntArray(7,1,5,3,6,4),1000),
-                Input.InputSet.build((Object) MyArrayTools.getIntArray(1,2,3,4,5),500)
+                Input.InputSet.build(2,(Object) MyArrayTools.getIntArray(2,4,1)),
+                Input.InputSet.build(2,(Object) MyArrayTools.getIntArray(3,2,6,5,0,3)),
+                Input.InputSet.build(1000,(Object) MyArrayTools.getIntArray(7,1,5,3,6,4)),
+                Input.InputSet.build(500,(Object) MyArrayTools.getIntArray(1,2,3,4,5)),
+                Input.InputSet.build(0,(Object) MyArrayTools.getIntArray(1,2,3,4,5)),
+                Input.InputSet.build(1000000000,(Object) MyArrayTools.getIntArray(1,2,3,4,5))
         );
     }
 
     @Override
     public List<Answer> getAnswers() {
-        return Answer.makeAnswerList(2,7,7,4);
+        return Answer.makeAnswerList(2,7,7,4,0,4);
     }
 
-    class Solution01888 {
+    public class Solution01888 {
         public int maxProfit(int k, int[] prices) {
+            if(k<=0){
+                return 0;
+            }
 
-            //TODO
-            return 0;
+            int max = 0;
+            k = Math.min(k,prices.length);
+
+            int[] buy = new int[k];
+            int[] sell = new int[k];
+
+            Arrays.fill(buy,Integer.MIN_VALUE);
+            Arrays.fill(sell,0);
+
+            for (int price : prices) {
+                buy[0] = Math.max(buy[0],-price);
+                sell[0] = Math.max(sell[0],buy[0]+price);
+                max = Math.max(max,sell[0]);
+
+                for (int i = 1; i < k; i++) {
+                    buy[i] = Math.max(buy[i],sell[i-1]-price);
+                    sell[i] = Math.max(sell[i],buy[i]+price);
+                    max = Math.max(max,sell[i]);
+                }
+
+            }
+
+            return max;
         }
     }
 }

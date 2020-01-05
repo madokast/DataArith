@@ -24,10 +24,14 @@ public class TestEntry {
     private Class[] parameters;
 
     public static TestEntry getInstance(Class solutionClass){
-        Class  outClass = solutionClass.getEnclosingClass();
+        Class outClass = solutionClass.getEnclosingClass();
+//        System.err.println("solutionClass = " + solutionClass);
+//        System.err.println("outClass = " + outClass);
         final Constructor[] constructors = solutionClass.getConstructors();
+
         if(constructors.length!=1){
-            MyRequire.throwRunTimeException("TestEntry:Question内部类Solution构造器不唯一");
+            System.out.println("constructors.length = " + constructors.length);
+            MyRequire.throwRunTimeException("TestEntry:Question内部类Solution构造器!=1(" + solutionClass.getName());
         }
 
         final Method[] methods = solutionClass.getMethods();

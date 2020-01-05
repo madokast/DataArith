@@ -10,8 +10,11 @@ import zrx.com.leetcode.Q0040.Q0053MaximumSubarray;
 import zrx.com.leetcode.Q0060.Q0061RotateList;
 import zrx.com.leetcode.Q0060.Q0075SortColors;
 import zrx.com.leetcode.Q0120.Q0121BestTimeToBuyAndSellStock;
+import zrx.com.leetcode.Q0120.Q0122BestTimeToBuyAndSellStockII;
+import zrx.com.leetcode.Q0120.Q0123BestTimeToBuyAndSellStockIII;
 import zrx.com.leetcode.Q0140.Q0152MaximumProductSubarray;
 import zrx.com.leetcode.Q0160.Q0167TwoSum2InputArrayIsSorted;
+import zrx.com.leetcode.Q0180.Q0188BestTimeToBuyAndSellStockIV;
 import zrx.com.leetcode.Q0180.Q0198HouseRobber;
 import zrx.com.leetcode.Q0220.Q0238ProductOfArrayExceptSelf;
 import zrx.com.leetcode.Q0440.Q0454FourSumII;
@@ -89,10 +92,16 @@ import zrx.com.leetcode.Q0680.Q0697DegreeOfAnArray;
  *
  * 2020年1月4日
  * 122. Best Time to Buy and Sell Stock II
- *
+ * @see zrx.com.leetcode.Q0120.Q0122BestTimeToBuyAndSellStockII
  * 123. Best Time to Buy and Sell Stock III
+ * @see zrx.com.leetcode.Q0120.Q0123BestTimeToBuyAndSellStockIII
  *
+ * 2020年1月5日 - 继续学习动态规划
  * 188. Best Time to Buy and Sell Stock IV
+ * @see zrx.com.leetcode.Q0180.Q0188BestTimeToBuyAndSellStockIV
+ * 10. Regular Expression Matching
+ *
+ * 32. Longest Valid Parentheses
  *
  */
 
@@ -113,8 +122,11 @@ public class 刷题日志 {
     private Q0061RotateList q0061RotateList;
     private Q0075SortColors q0075SortColors;
     private Q0121BestTimeToBuyAndSellStock q0121BestTimeToBuyAndSellStock;
+    private Q0122BestTimeToBuyAndSellStockII q0122BestTimeToBuyAndSellStockII;
+    private Q0123BestTimeToBuyAndSellStockIII q0123BestTimeToBuyAndSellStockIII;
     private Q0152MaximumProductSubarray q0152MaximumProductSubarray;
     private Q0167TwoSum2InputArrayIsSorted q0167TwoSum2InputArrayIsSorted;
+    private Q0188BestTimeToBuyAndSellStockIV q0188BestTimeToBuyAndSellStockIV;
     private Q0198HouseRobber q0198HouseRobber;
     private Q0238ProductOfArrayExceptSelf q0238ProductOfArrayExceptSelf;
     private Q0454FourSumII q0454FourSumII;
