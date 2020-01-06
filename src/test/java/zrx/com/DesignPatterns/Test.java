@@ -2,6 +2,7 @@ package zrx.com.DesignPatterns;
 
 import zrx.com.DesignPatterns.CommandPattern.Remoter;
 import zrx.com.DesignPatterns.CommandPattern.command.MetaCommand;
+import zrx.com.DesignPatterns.CompositePattern.CompositePatternLearn;
 import zrx.com.DesignPatterns.DecoratorPattern.DesignPatternsLearn;
 import zrx.com.DesignPatterns.Factorys.AbstractFactoryPattern;
 import zrx.com.DesignPatterns.Factorys.FactoryPattern;
@@ -22,6 +23,11 @@ import zrx.com.MultiThread.MyTools;
  */
 
 public class Test {
+    @org.junit.Test
+    public void testCompositePatternLearn(){
+        new CompositePatternLearn().learn();
+    }
+
     @org.junit.Test
     public void testCommandPattern(){
         MyTools.printCurrentMethod(true,"学习命令模式");
