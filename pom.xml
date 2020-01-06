@@ -43,7 +43,9 @@
                     </compilerArgs>
                     <source>${maven.compiler.source}</source>
                     <target>${maven.compiler.target}</target>
-                    <useIncrementalCompilation>true</useIncrementalCompilation>
+                    <encoding>UTF-8</encoding>
+                    <meminitial>128m</meminitial>
+                    <useIncrementalCompilation>false</useIncrementalCompilation>
                 </configuration>
             </plugin>
         </plugins>

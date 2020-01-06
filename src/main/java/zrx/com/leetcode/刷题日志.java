@@ -6,8 +6,10 @@ import zrx.com.leetcode.Q0020.Q0027RemoveElement;
 import zrx.com.leetcode.Q0020.Q0028ImplementStrStrKMP;
 import zrx.com.leetcode.Q0020.Q0030SubstringWithConcatenationOfAllWordsMap;
 import zrx.com.leetcode.Q0040.Q0042TrappingRainWater;
+import zrx.com.leetcode.Q0040.Q0044WildcardMatching;
 import zrx.com.leetcode.Q0040.Q0053MaximumSubarray;
 import zrx.com.leetcode.Q0060.Q0061RotateList;
+import zrx.com.leetcode.Q0060.Q0062UniquePaths;
 import zrx.com.leetcode.Q0060.Q0075SortColors;
 import zrx.com.leetcode.Q0120.Q0121BestTimeToBuyAndSellStock;
 import zrx.com.leetcode.Q0120.Q0122BestTimeToBuyAndSellStockII;
@@ -99,15 +101,27 @@ import zrx.com.leetcode.Q0680.Q0697DegreeOfAnArray;
  * 2020年1月5日 - 继续学习动态规划
  * 188. Best Time to Buy and Sell Stock IV
  * @see zrx.com.leetcode.Q0180.Q0188BestTimeToBuyAndSellStockIV
- * 10. Regular Expression Matching
  *
+ *
+ * 2020年1月6日
+ * 10. Regular Expression Matching
+ * @see Q0010RegularExpressionMatching
  * 32. Longest Valid Parentheses
  *
+ * 44. Wildcard Matching
+ * @see zrx.com.leetcode.Q0040.Q0044WildcardMatching
+ * 62. Unique Paths
+ * @see zrx.com.leetcode.Q0060.Q0062UniquePaths
+ * 63. Unique Paths II
+ *
+ * 64. Minimum Path Sum
  */
 
 public class 刷题日志 {
     private Q0001TwoSum q0001TwoSum;
     private Q0003LongestSubstringWithoutRepeatingCharacters q0003LongestSubstringWithoutRepeatingCharacters;
+    private Q0005LongestPalindromicSubstring q0005LongestPalindromicSubstring;
+    private Q0010RegularExpressionMatching q0010RegularExpressionMatching;
     private Q0011ContainerWithMostWater q0011ContainerWithMostWater;
     private Q0015ThreeSum q0015ThreeSum;
     private Q0016ThreeSumClosest q0016ThreeSumClosest;
@@ -118,8 +132,10 @@ public class 刷题日志 {
     private Q0028ImplementStrStrKMP q0028ImplementStrStrKMP;
     private Q0030SubstringWithConcatenationOfAllWordsMap q0030SubstringWithConcatenationOfAllWordsMap;
     private Q0042TrappingRainWater q0042TrappingRainWater;
+    private Q0044WildcardMatching q0044WildcardMatching;
     private Q0053MaximumSubarray q0053MaximumSubarray;
     private Q0061RotateList q0061RotateList;
+    private Q0062UniquePaths q0062UniquePaths;
     private Q0075SortColors q0075SortColors;
     private Q0121BestTimeToBuyAndSellStock q0121BestTimeToBuyAndSellStock;
     private Q0122BestTimeToBuyAndSellStockII q0122BestTimeToBuyAndSellStockII;
@@ -133,5 +149,4 @@ public class 刷题日志 {
     private Q0560SubarraySumEqualsK q0560SubarraySumEqualsK;
     private Q0628MaximumProductOfThreeNumbers q0628MaximumProductOfThreeNumbers;
     private Q0697DegreeOfAnArray q0697DegreeOfAnArray;
-    private Q0005LongestPalindromicSubstring q0005LongestPalindromicSubstring;
 }

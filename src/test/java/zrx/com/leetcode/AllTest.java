@@ -2,10 +2,13 @@ package zrx.com.leetcode;
 
 import org.junit.Test;
 import zrx.com.leetcode.Q0000.Q0005LongestPalindromicSubstring;
+import zrx.com.leetcode.Q0000.Q0010RegularExpressionMatching;
 import zrx.com.leetcode.Q0020.*;
 import zrx.com.leetcode.Q0040.Q0042TrappingRainWater;
+import zrx.com.leetcode.Q0040.Q0044WildcardMatching;
 import zrx.com.leetcode.Q0040.Q0053MaximumSubarray;
 import zrx.com.leetcode.Q0060.Q0061RotateList;
+import zrx.com.leetcode.Q0060.Q0062UniquePaths;
 import zrx.com.leetcode.Q0060.Q0075SortColors;
 import zrx.com.leetcode.Q0120.Q0121BestTimeToBuyAndSellStock;
 import zrx.com.leetcode.Q0120.Q0122BestTimeToBuyAndSellStockII;
@@ -33,6 +36,13 @@ import zrx.com.leetcode.utils.LeerCodeTest.TestForLeetCode;
  */
 
 public class AllTest {
+    @Test
+    public void test20200106(){
+        TestForLeetCode.happy(Q0010RegularExpressionMatching.class);
+        TestForLeetCode.happy(Q0044WildcardMatching.class);
+        TestForLeetCode.happy(Q0062UniquePaths.class);
+    }
+
     @Test
     public void test20200105(){
         TestForLeetCode.happy(Q0122BestTimeToBuyAndSellStockII.class);
