@@ -1,6 +1,7 @@
 package zrx.com.others;
 
 import zrx.com.MultiThread.MyTools;
+import zrx.com.others.COSY.SR;
 
 import java.util.ArrayList;
 import java.util.concurrent.ConcurrentLinkedDeque;
@@ -17,6 +18,11 @@ import java.util.concurrent.ConcurrentLinkedDeque;
  */
 
 public class Test {
+    @org.junit.Test
+    public void test11(){
+        SR.main(null);
+    }
+
     @org.junit.Test
     public void test01() {
         int x = 3;

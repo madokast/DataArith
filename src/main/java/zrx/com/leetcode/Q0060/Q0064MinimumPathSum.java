@@ -3,7 +3,9 @@ package zrx.com.leetcode.Q0060;
 import zrx.com.leetcode.utils.LeerCodeTest.Answer;
 import zrx.com.leetcode.utils.LeerCodeTest.Input;
 import zrx.com.leetcode.utils.LeerCodeTest.Question;
+import zrx.com.leetcode.utils.LeerCodeTest.ToString;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -28,6 +30,10 @@ import java.util.List;
  * Data
  * 11:15
  *
+ * ----------------
+ * Runtime: 1 ms, faster than 99.52% of Java online submissions for Minimum Path Sum.
+ * Memory Usage: 40.7 MB, less than 93.24% of Java online submissions for Minimum Path Sum.
+ *
  * @author zrx
  * @version 1.0
  */
@@ -49,10 +55,36 @@ public class Q0064MinimumPathSum implements Question {
         return Answer.makeAnswerList(7);
     }
 
-    public class Solution {
+    public class Solution0064 {
+        private int[][] minPathSumArr;
         public int minPathSum(int[][] grid) {
-            //TODO
-            return 0;
+            minPathSumArr = new int[grid.length][];
+            for (int i = 0; i < minPathSumArr.length; i++) {
+                minPathSumArr[i] = new int[grid[0].length];
+                Arrays.fill(minPathSumArr[i],-1);
+            }
+            minPathSumArr[0][0] = grid[0][0];
+
+            int ret = minPathSum(grid,grid.length-1,grid[0].length-1);
+
+            System.out.println("动态规划数组：" + ToString.intArrArrToString(minPathSumArr));
+
+            return ret;
         }
+
+        private int minPathSum(int[][] grid,int i,int j){
+            if(minPathSumArr[i][j]!=-1){
+                return minPathSumArr[i][j];
+            }
+
+            minPathSumArr[i][j] = Math.min(
+                    i>0?minPathSum(grid,i-1,j):Integer.MAX_VALUE,
+                    j>0?minPathSum(grid,i,j-1):Integer.MAX_VALUE
+            ) + grid[i][j];
+
+            return minPathSumArr[i][j];
+        }
+
+
     }
 }

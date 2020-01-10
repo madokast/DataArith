@@ -28,7 +28,7 @@ public class SR {
         final SR sr = new SR();
 //        final Point3[] point3s = sr.sphericalUniformDistribution(100);
 //        printPoint3s(point3s);
-        sr.printSRx(700,3.5e-3,7.5e-3,0.0895,2);
+        sr.printSRy(700,3.5e-3,7.5e-3,0.1432,2);
     }
 
     public void printSRx(int number , double xMax ,double x1Max,double dE, int color){

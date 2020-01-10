@@ -1,16 +1,11 @@
 package zrx.com.leetcode;
 
 import zrx.com.leetcode.Q0000.*;
-import zrx.com.leetcode.Q0020.Q0026RemoveDuplicatesFromSortedArray;
-import zrx.com.leetcode.Q0020.Q0027RemoveElement;
-import zrx.com.leetcode.Q0020.Q0028ImplementStrStrKMP;
-import zrx.com.leetcode.Q0020.Q0030SubstringWithConcatenationOfAllWordsMap;
+import zrx.com.leetcode.Q0020.*;
 import zrx.com.leetcode.Q0040.Q0042TrappingRainWater;
 import zrx.com.leetcode.Q0040.Q0044WildcardMatching;
 import zrx.com.leetcode.Q0040.Q0053MaximumSubarray;
-import zrx.com.leetcode.Q0060.Q0061RotateList;
-import zrx.com.leetcode.Q0060.Q0062UniquePaths;
-import zrx.com.leetcode.Q0060.Q0075SortColors;
+import zrx.com.leetcode.Q0060.*;
 import zrx.com.leetcode.Q0120.Q0121BestTimeToBuyAndSellStock;
 import zrx.com.leetcode.Q0120.Q0122BestTimeToBuyAndSellStockII;
 import zrx.com.leetcode.Q0120.Q0123BestTimeToBuyAndSellStockIII;
@@ -106,17 +101,31 @@ import zrx.com.leetcode.Q0680.Q0697DegreeOfAnArray;
  * 2020年1月6日
  * 10. Regular Expression Matching
  * @see Q0010RegularExpressionMatching
- * 32. Longest Valid Parentheses
- *
  * 44. Wildcard Matching
  * @see zrx.com.leetcode.Q0040.Q0044WildcardMatching
  * 62. Unique Paths
  * @see zrx.com.leetcode.Q0060.Q0062UniquePaths
+ *
+ * 2020年1月9日
+ * 32. Longest Valid Parentheses
+ * @see zrx.com.leetcode.Q0020.Q0032LongestValidParentheses
  * 63. Unique Paths II
+ * @see zrx.com.leetcode.Q0060.Q0063UniquePathsII
  *
+ * 2020年1月10日
  * 64. Minimum Path Sum
- *
+ * @see zrx.com.leetcode.Q0060.Q0064MinimumPathSum
  * 72. Edit Distance
+ * @see zrx.com.leetcode.Q0060.Q0072EditDistance
+ * 85. Maximal Rectangle
+ *
+ * 87. Scramble String
+ *
+ * 91. Decode Ways
+ *
+ * 95. Unique Binary Search Trees II
+ *
+ *
  */
 
 public class 刷题日志 {
@@ -133,11 +142,15 @@ public class 刷题日志 {
     private Q0027RemoveElement q0027RemoveElement;
     private Q0028ImplementStrStrKMP q0028ImplementStrStrKMP;
     private Q0030SubstringWithConcatenationOfAllWordsMap q0030SubstringWithConcatenationOfAllWordsMap;
+    private Q0032LongestValidParentheses q0032LongestValidParentheses;
     private Q0042TrappingRainWater q0042TrappingRainWater;
     private Q0044WildcardMatching q0044WildcardMatching;
     private Q0053MaximumSubarray q0053MaximumSubarray;
     private Q0061RotateList q0061RotateList;
     private Q0062UniquePaths q0062UniquePaths;
+    private Q0063UniquePathsII q0063UniquePathsII;
+    private Q0064MinimumPathSum q0064MinimumPathSum;
+    private Q0072EditDistance q0072EditDistance;
     private Q0075SortColors q0075SortColors;
     private Q0121BestTimeToBuyAndSellStock q0121BestTimeToBuyAndSellStock;
     private Q0122BestTimeToBuyAndSellStockII q0122BestTimeToBuyAndSellStockII;

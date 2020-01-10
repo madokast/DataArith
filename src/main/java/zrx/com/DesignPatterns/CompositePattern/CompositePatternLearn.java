@@ -1,5 +1,9 @@
 package zrx.com.DesignPatterns.CompositePattern;
 
+import zrx.com.MultiThread.MyTools;
+import zrx.com.leetcode.utils.MyArrayTools;
+import zrx.com.leetcode.utils.MyTimer;
+
 /**
  * Description
  * 组合模式
@@ -48,6 +52,7 @@ public class CompositePatternLearn {
     }
 
     public void learn(){
+        MyTools.printCurrentMethod(true);
         ComponentIterator componentIterator = new ComponentIterator(root);
 
         while (componentIterator.hasNext()){

@@ -76,7 +76,8 @@ public class MyRequire {
 
 
     public static void requireTrue(boolean b){
-        if(!b)
+        if(!b){
             throw new RuntimeException("requireTrue failed");
+        }
     }
 }
