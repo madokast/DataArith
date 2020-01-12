@@ -2,6 +2,7 @@ package zrx.com.others;
 
 import zrx.com.MultiThread.MyTools;
 import zrx.com.others.COSY.SR;
+import zrx.com.others.dateAndArith.MonotonicStack;
 
 import java.util.ArrayList;
 import java.util.concurrent.ConcurrentLinkedDeque;
@@ -18,6 +19,11 @@ import java.util.concurrent.ConcurrentLinkedDeque;
  */
 
 public class Test {
+    @org.junit.Test
+    public void testMonotonicStack(){
+        MonotonicStack.learn();
+    }
+
     @org.junit.Test
     public void test11(){
         SR.main(null);

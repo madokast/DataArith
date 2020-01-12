@@ -4,7 +4,10 @@ import zrx.com.leetcode.utils.LeerCodeTest.Answer;
 import zrx.com.leetcode.utils.LeerCodeTest.Input;
 import zrx.com.leetcode.utils.LeerCodeTest.Question;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Description
@@ -61,6 +64,11 @@ import java.util.List;
  * <p>
  * Data
  * 17:05
+ * ------------------
+ * 2020年1月12日
+ * Runtime: 10 ms, faster than 25.56% of Java online submissions for Scramble String.
+ * Memory Usage: 37.8 MB, less than 43.75% of Java online submissions for Scramble String.
+ * 居然我做出来了
  *
  * @author zrx
  * @version 1.0
@@ -80,10 +88,82 @@ public class Q0087ScrambleString implements Question {
         return Answer.makeAnswerList(true, false);
     }
 
-    public class Solution {
+    public class Solution0087 {
+        Map<Character,List<Integer>> mapS2 = new HashMap<>();
+
         public boolean isScramble(String s1, String s2) {
-            //TODO
-            return false;
+            for (int i = 0; i < s2.length(); i++) {
+                if(!mapS2.containsKey(s2.charAt(i))){
+                    mapS2.put(s2.charAt(i),new ArrayList<>());
+                }
+
+                mapS2.get(s2.charAt(i)).add(i);
+            }
+
+
+            return isScramble(s1,0,s1.length(),s2,0,s2.length());
+        }
+
+        private boolean isScramble(String s1,int startIncluding1,int endExcluding1,
+                                   String s2,int startIncluding2,int endExcluding2){
+            if(endExcluding1-startIncluding1!=endExcluding2-startIncluding2)
+                throw new RuntimeException("endExcluding1-startIncluding1!=endExcluding2-startIncluding2");
+
+            if(endExcluding1-startIncluding1==1){
+                return s1.charAt(startIncluding1)==s2.charAt(startIncluding2);
+            }
+
+            //len>1
+
+            List<Integer> list = new ArrayList<>(endExcluding1-startIncluding1);
+
+            for (int i = startIncluding1; i < endExcluding1; i++) {
+                char s1i = s1.charAt(i);
+
+                if(!mapS2.containsKey(s1i)){
+                    return false;
+                }
+
+                List<Integer> listS2 = mapS2.get(s1i);
+                for (Integer indexS2 : listS2) {
+                    if(indexS2>=startIncluding2&&
+                            indexS2<endExcluding2&&
+                            !list.contains(indexS2)){
+                        list.add(indexS2);
+                        break;
+                    }
+                }
+
+            }
+
+            if(list.size()!=(endExcluding1-startIncluding1)){
+                return false;
+            }else {
+                for (int i = startIncluding1 + 1; i < endExcluding1; i++){
+
+
+                    if(isScramble(s1,startIncluding1,i,
+                            s2,startIncluding2,startIncluding2+(i-startIncluding1))
+                            &&
+                            isScramble(s1,i,endExcluding1,
+                                    s2,endExcluding2-endExcluding1+i,endExcluding2)
+
+                    ){
+                        return true;
+                    }
+
+                    if(isScramble(s1,startIncluding1,i,
+                            s2,endExcluding2+startIncluding1-i,endExcluding2)
+                            &&
+                            isScramble(s1,i,endExcluding1,
+                                    s2,startIncluding2,startIncluding2+(endExcluding1-i))
+                    ){
+                        return true;
+                    }
+                }
+
+                return false;
+            }
         }
     }
 }

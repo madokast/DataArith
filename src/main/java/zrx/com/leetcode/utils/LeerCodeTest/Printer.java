@@ -23,6 +23,7 @@ public class Printer {
         map.put(int[].class,MyArrayTools::intArrayToString);
         map.put(String[].class,o->Arrays.toString((Object[])o));
         map.put(int[][].class,ToString::intArrArrToString);
+        map.put(char[][].class,ToString::charArrArrToString);
     }
 
     public static String print(Class clazz,Object o){

@@ -6,6 +6,9 @@ import zrx.com.leetcode.Q0040.Q0042TrappingRainWater;
 import zrx.com.leetcode.Q0040.Q0044WildcardMatching;
 import zrx.com.leetcode.Q0040.Q0053MaximumSubarray;
 import zrx.com.leetcode.Q0060.*;
+import zrx.com.leetcode.Q0080.Q0084LargestRectangleInHistogram;
+import zrx.com.leetcode.Q0080.Q0085MaximalRectangle;
+import zrx.com.leetcode.Q0080.Q0087ScrambleString;
 import zrx.com.leetcode.Q0120.Q0121BestTimeToBuyAndSellStock;
 import zrx.com.leetcode.Q0120.Q0122BestTimeToBuyAndSellStockII;
 import zrx.com.leetcode.Q0120.Q0123BestTimeToBuyAndSellStockIII;
@@ -117,13 +120,18 @@ import zrx.com.leetcode.Q0680.Q0697DegreeOfAnArray;
  * @see zrx.com.leetcode.Q0060.Q0064MinimumPathSum
  * 72. Edit Distance
  * @see zrx.com.leetcode.Q0060.Q0072EditDistance
+ *
+ * 2020年1月11日
  * 85. Maximal Rectangle
- *
+ * @see zrx.com.leetcode.Q0080.Q0085MaximalRectangle
  * 87. Scramble String
- *
+ * @see zrx.com.leetcode.Q0080.Q0087ScrambleString
  * 91. Decode Ways
  *
  * 95. Unique Binary Search Trees II
+ *
+ * 84. Largest Rectangle in Histogram
+ * @see zrx.com.leetcode.Q0080.Q0084LargestRectangleInHistogram
  *
  *
  */
@@ -152,6 +160,9 @@ public class 刷题日志 {
     private Q0064MinimumPathSum q0064MinimumPathSum;
     private Q0072EditDistance q0072EditDistance;
     private Q0075SortColors q0075SortColors;
+    private Q0084LargestRectangleInHistogram q0084LargestRectangleInHistogram;
+    private Q0085MaximalRectangle q0085MaximalRectangle;
+    private Q0087ScrambleString q0087ScrambleString;
     private Q0121BestTimeToBuyAndSellStock q0121BestTimeToBuyAndSellStock;
     private Q0122BestTimeToBuyAndSellStockII q0122BestTimeToBuyAndSellStockII;
     private Q0123BestTimeToBuyAndSellStockIII q0123BestTimeToBuyAndSellStockIII;
