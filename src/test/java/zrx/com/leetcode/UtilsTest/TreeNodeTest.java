@@ -5,6 +5,7 @@ import zrx.com.DesignPatterns.CompositePattern.ItemIterator;
 import zrx.com.MultiThread.MyTools;
 import zrx.com.leetcode.utils.innerObject.TreeNode;
 
+import java.lang.invoke.VarHandle;
 import java.util.Objects;
 
 /**
@@ -20,6 +21,24 @@ import java.util.Objects;
  */
 
 public class TreeNodeTest {
+    @Test
+    public void insertSearchTreeTest(){
+        MyTools.printCurrentMethod(true);
+
+        TreeNode root = new TreeNode(5);
+        TreeNode.insertSearchTree(root,4);
+        TreeNode.insertSearchTree(root,7);
+        TreeNode.insertSearchTree(root,6);
+        TreeNode.insertSearchTree(root,10);
+
+        System.out.println("root = " + root);
+        System.out.println("root = " + root.toLeetCodeForm());
+
+        TreeNode make = TreeNode.make(new Integer[]{5, 4, 7, null, null, 6, 10});
+
+        System.out.println("make.equals(root) = " + make.equals(root));
+    }
+
     @Test
     public void test01(){
         MyTools.printCurrentMethod(true);

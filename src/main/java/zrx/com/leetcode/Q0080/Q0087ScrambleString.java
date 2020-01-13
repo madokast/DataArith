@@ -70,6 +70,21 @@ import java.util.Map;
  * Memory Usage: 37.8 MB, less than 43.75% of Java online submissions for Scramble String.
  * 居然我做出来了
  *
+ * ------------------
+ * 看看别人的解法
+ * 这道题定义了一种搅乱字符串，就是说假如把一个字符串当做一个二叉树的根
+ * ，然后它的非空子字符串是它的子节点，然后交换某个子字符串的两个子节点
+ * ，重新爬行回去形成一个新的字符串，这个新字符串和原来的字符串互为搅乱
+ * 字符串。这道题可以用递归 Recursion 或是动态规划 Dynamic Programming
+ * 来做，我们先来看递归的解法，参见网友 uniEagle 的博客，简单的说，就是
+ * s1 和 s2 是 scramble 的话，那么必然存在一个在 s1 上的长度 l1，将
+ * s1 分成 s11 和 s12 两段，同样有 s21 和 s22，那么要么 s11 和 s21 是
+ * scramble 的并且 s12 和 s22 是 scramble 的；要么 s11 和 s22 是
+ * scramble 的并且 s12 和 s21 是 scramble 的。就拿题目中的例子
+ * rgeat 和 great 来说，rgeat 可分成 rg 和 eat 两段， great 可分成
+ * gr 和 eat 两段，rg 和 gr 是 scrambled 的， eat 和 eat 当然是
+ * scrambled。根据这点，我们可以写出代码如下：
+ *
  * @author zrx
  * @version 1.0
  */

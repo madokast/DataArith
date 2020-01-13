@@ -8,9 +8,7 @@ import zrx.com.leetcode.Q0040.Q0042TrappingRainWater;
 import zrx.com.leetcode.Q0040.Q0044WildcardMatching;
 import zrx.com.leetcode.Q0040.Q0053MaximumSubarray;
 import zrx.com.leetcode.Q0060.*;
-import zrx.com.leetcode.Q0080.Q0084LargestRectangleInHistogram;
-import zrx.com.leetcode.Q0080.Q0085MaximalRectangle;
-import zrx.com.leetcode.Q0080.Q0087ScrambleString;
+import zrx.com.leetcode.Q0080.*;
 import zrx.com.leetcode.Q0120.Q0121BestTimeToBuyAndSellStock;
 import zrx.com.leetcode.Q0120.Q0122BestTimeToBuyAndSellStockII;
 import zrx.com.leetcode.Q0120.Q0123BestTimeToBuyAndSellStockIII;
@@ -37,6 +35,14 @@ import zrx.com.leetcode.utils.LeerCodeTest.TestForLeetCode;
  */
 
 public class AllTest {
+    @Test
+    public void test20200113(){
+        TestForLeetCode.happy(Q0091DecodeWays.class);
+        TestForLeetCode.happy(Q0095UniqueBinarySearchTreesII.class);
+        TestForLeetCode.happy(Q0096UniqueBinarySearchTrees.class);
+        TestForLeetCode.happy(Q0094BinaryTreeInorderTraversal.class);
+    }
+
     @Test
     public void test20200112(){
         TestForLeetCode.happy(Q0087ScrambleString.class);

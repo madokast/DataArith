@@ -6,6 +6,8 @@ public interface EqualMethod {
     boolean equal(Object o1,Object o2);
 
     static boolean listEqual(Object o1,Object o2){
+//        System.out.println("o1 = " + o1);
+
         List<?> list1 = (List<?>)o1;
         List<?> list2 = (List<?>)o2;
 
@@ -16,8 +18,10 @@ public interface EqualMethod {
         list2==null&&list1!=null&&list1.size()==0)
             return true;
 
-        if(list1.size()!=list2.size())
+        if(list1.size()!=list2.size()){
+//            System.out.println("list2.size() = " + list2.size());
             return false;
+        }
 
         Map<Object,Integer> map1 = new HashMap<>();
         Map<Object,Integer> map2 = new HashMap<>();
@@ -34,10 +38,14 @@ public interface EqualMethod {
             Object key = entry.getKey();
             Integer value = entry.getValue();
 
-            if(!map2.containsKey(key))
+            if(!map2.containsKey(key)){
+//                System.out.println("key = " + key);
                 return false;
-            else if(value!=map2.get(key))
+            }
+            else if(!value.equals(map2.get(key))){
+//                System.out.println("key = " + key);
                 return false;
+            }
         }
 
         return true;

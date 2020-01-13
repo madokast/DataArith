@@ -9,13 +9,13 @@ import java.util.*;
  * Description
  * 内置对象
  * /**
- *  * Definition for a binary tree node.
- *  * public class TreeNode {
- *  *     int val;
- *  *     TreeNode left;
- *  *     TreeNode right;
- *  *     TreeNode(int x) { val = x; }
- *  * }
+ * * Definition for a binary tree node.
+ * * public class TreeNode {
+ * *     int val;
+ * *     TreeNode left;
+ * *     TreeNode right;
+ * *     TreeNode(int x) { val = x; }
+ * * }
  *
  * <p>
  * Data
@@ -37,11 +37,12 @@ public class TreeNode {
     /**
      * 利用数组建立二叉树
      * 2020年1月10日 测试通过
+     *
      * @param leetCodeForm leetcode 里数组表示的二叉树
      * @return 二叉树
      */
-    public static TreeNode make(Integer[] leetCodeForm){
-        if(leetCodeForm.length==0||leetCodeForm[0]==null){
+    public static TreeNode make(Integer[] leetCodeForm) {
+        if (leetCodeForm.length == 0 || leetCodeForm[0] == null) {
             return null;
         }
 
@@ -49,18 +50,18 @@ public class TreeNode {
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
 
-        for (int i = 1; i < leetCodeForm.length; i+=2) {
+        for (int i = 1; i < leetCodeForm.length; i += 2) {
             Integer left = leetCodeForm[i];
-            Integer right = i>=leetCodeForm.length-1?null:leetCodeForm[i+1];
+            Integer right = i >= leetCodeForm.length - 1 ? null : leetCodeForm[i + 1];
 
             TreeNode poll = queue.poll();
 
-            if(left!=null){
+            if (left != null) {
                 Objects.requireNonNull(poll).left = new TreeNode(left);
                 queue.add(Objects.requireNonNull(poll).left);
             }
 
-            if(right!=null){
+            if (right != null) {
                 Objects.requireNonNull(poll).right = new TreeNode(right);
                 queue.add(Objects.requireNonNull(poll).right);
             }
@@ -71,22 +72,60 @@ public class TreeNode {
     }
 
     /**
+     * 插入二叉搜索树
+     * 注意若树中有相同值，则不会发生插入操作
+     * 2020年1月13日通过测试
+     * @param root 根
+     * @param val  值
+     */
+    public static void insertSearchTree(TreeNode root, int val) {
+        if (val > root.val) {
+            if (root.right == null)
+                root.right = new TreeNode(val);
+            else
+                insertSearchTree(root.right, val);
+        } else {
+            if (root.left == null)
+                root.left = new TreeNode(val);
+            else
+                insertSearchTree(root.left, val);
+        }
+    }
+
+    public static void insertSearchTree(TreeNode root,int[] values){
+        for (int value : values) {
+            insertSearchTree(root,value);
+        }
+    }
+
+    public static TreeNode makeSearchTree(int[] values){
+        TreeNode root = new TreeNode(values[0]);
+
+        for (int i = 1; i < values.length; i++) {
+            insertSearchTree(root,values[i]);
+        }
+
+        return root;
+    }
+
+    /**
      * 将二叉树转换成 leetcode数组形式
      * 2020年1月10日 测试通过
+     *
      * @return leetcode 数组形式
      */
-    public String toLeetCodeForm(){
+    public String toLeetCodeForm() {
         List<Integer> list = new ArrayList<>();
 
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(this);
 
-        while (!queue.isEmpty()){
+        while (!queue.isEmpty()) {
             TreeNode poll = queue.poll();
 
-            if(poll==null){
+            if (poll == null) {
                 list.add(null);
-            }else {
+            } else {
                 list.add(poll.val);
                 queue.add(poll.left);
                 queue.add(poll.right);
@@ -94,11 +133,11 @@ public class TreeNode {
 
             boolean allNull = true;
             for (TreeNode treeNode : queue) {
-                if(treeNode!=null){
-                    allNull=false;
+                if (treeNode != null) {
+                    allNull = false;
                 }
             }
-            if(allNull){
+            if (allNull) {
                 break;
             }
         }
@@ -127,10 +166,11 @@ public class TreeNode {
 
     /**
      * 2020年1月10日 测试通过
+     *
      * @return 格式化打印数组
      */
     @Override
-    public String toString(){
+    public String toString() {
         Queue<TreeNode> queue = new LinkedList<>();
         Queue<TreeNode> queue2 = new LinkedList<>();
         StringBuilder stringBuilder = new StringBuilder();
@@ -151,18 +191,18 @@ public class TreeNode {
                 queue2.add(right);
             }
 
-            MyRequire.requireTrue(queue.size()==0);
+            MyRequire.requireTrue(queue.size() == 0);
 
             boolean allNull = true;
             for (TreeNode treeNode : queue2) {
-                if(treeNode!=null){
-                    allNull=false;
+                if (treeNode != null) {
+                    allNull = false;
                 }
             }
 
-            if(!allNull){
+            if (!allNull) {
 
-                while (queue2.size()>0){
+                while (queue2.size() > 0) {
                     TreeNode poll = queue2.poll();
                     stringBuilder.append(nullOrVal(poll)).append("\t");
                     queue.add(poll);
@@ -171,24 +211,23 @@ public class TreeNode {
             }
         }
 
-        return stringBuilder.deleteCharAt(stringBuilder.length()-1).toString();
+        return stringBuilder.deleteCharAt(stringBuilder.length() - 1).toString();
     }
 
-    private static String nullOrVal(TreeNode node){
-        if(node==null)
+    private static String nullOrVal(TreeNode node) {
+        if (node == null)
             return "null";
         else
-            return String.format("%4d",node.val);
+            return String.format("%4d", node.val);
     }
 
-    private static TreeNode getLeft(TreeNode node){
-        return node==null?null:node.left;
+    private static TreeNode getLeft(TreeNode node) {
+        return node == null ? null : node.left;
     }
 
-    private static TreeNode getRight(TreeNode node){
-        return node==null?null:node.right;
+    private static TreeNode getRight(TreeNode node) {
+        return node == null ? null : node.right;
     }
-
 
 
     public String toStringParentAndChildren() {
@@ -196,29 +235,29 @@ public class TreeNode {
         StringBuilder stringBuilder = new StringBuilder();
         queue.add(this);
 
-        while (!queue.isEmpty()){
+        while (!queue.isEmpty()) {
             TreeNode pop = queue.poll();
             TreeNode left = pop.left;
             TreeNode right = pop.right;
 
-            if(right!=null||left!=null){
+            if (right != null || left != null) {
                 stringBuilder.append(pointString(pop, left, right)).append('\n');
             }
-            if(left!=null)
+            if (left != null)
                 queue.add(left);
-            if(right!=null)
+            if (right != null)
                 queue.add(right);
         }
 
         return stringBuilder.toString();
     }
 
-    private String pointString(TreeNode root,TreeNode left,TreeNode right){
+    private String pointString(TreeNode root, TreeNode left, TreeNode right) {
         Objects.requireNonNull(root);
 
         return "{" + root.val + "->" +
-                "(" + (left==null?null:left.val) + ", " +
-                (right==null?null:right.val) +")}";
+                "(" + (left == null ? null : left.val) + ", " +
+                (right == null ? null : right.val) + ")}";
     }
 
     @Override

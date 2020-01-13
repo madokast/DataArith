@@ -3,10 +3,7 @@ package zrx.com.leetcode.utils.LeerCodeTest;
 import zrx.com.leetcode.utils.MyRequire;
 import zrx.com.leetcode.utils.singlyLinkedList.ListNode;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 /**
  * Description
@@ -25,7 +22,7 @@ public class EqualJudge {
     static {
         map.put(int[].class, (o1, o2) -> MyRequire.isEqual((int[]) o1, (int[]) o2));
         map.put(ListNode.class, (o1, o2) -> ListNode.equals((ListNode) o1, (ListNode) o2));
-        map.put(List.class,EqualMethod::listEqual);
+        map.put(ArrayList.class,EqualMethod::listEqual);
     }
 
 
