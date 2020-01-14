@@ -36,6 +36,6 @@ public class BridgePatternLearn {
             remote.on();
             remote.off();
         }
-        
+
     }
 }

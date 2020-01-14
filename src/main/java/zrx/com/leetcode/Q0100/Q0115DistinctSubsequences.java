@@ -4,6 +4,7 @@ import zrx.com.leetcode.utils.LeerCodeTest.Answer;
 import zrx.com.leetcode.utils.LeerCodeTest.Input;
 import zrx.com.leetcode.utils.LeerCodeTest.Question;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -55,6 +56,9 @@ import java.util.List;
  * <p>
  * Data
  * 16:42
+ * ---------
+ * Runtime: 86 ms, faster than 5.08% of Java online submissions for Distinct Subsequences.
+ * Memory Usage: 39.8 MB, less than 7.69% of Java online submissions for Distinct Subsequences.
  *
  * @author zrx
  * @version 1.0
@@ -76,10 +80,53 @@ public class Q0115DistinctSubsequences implements Question {
 
     public class Solution0115 {
         public int numDistinct(String s, String t) {
+            if(s.length()==0||t.length()==0)
+                return 0;
 
-            //TODO
+            int[] dp = new int[t.length()];
+            char t0 = t.charAt(0);
 
-            return 0;
+            dp[0] = t0 ==s.charAt(0)?1:0;
+
+            for (int i = 1; i < s.length(); i++) {
+
+                System.out.println("dp = " + Arrays.toString(dp));
+
+//                for (int i1 = 1; i1 < dp.length; i1++) {
+//                    if(t.charAt(i1)==s.charAt(i))
+//                        dp[i1]+=dp[i1-1];
+//                }
+
+                for (int i1 = dp.length - 1; i1 >= 1; i1--) {
+                    if(t.charAt(i1)==s.charAt(i))
+                        dp[i1]+=dp[i1-1];
+                }
+
+                if(t0==s.charAt(i)) dp[0]++;
+            }
+            System.out.println("dp = " + Arrays.toString(dp));
+
+            return dp[dp.length-1];
+
+//            int[][] dp = new int[s.length()][];
+//            for (int i = 0; i < dp.length; i++) {
+//                dp[i] = new int[t.length()];
+//            }
+//
+//            dp[0][0] = s.charAt(0)==t.charAt(0)?1:0;
+//
+//            for (int i = 0; i < s.length(); i++) {
+//                for (int j = 0; j < t.length(); j++) {
+//                    if(i==0&&j==0)
+//                        continue;
+//
+//                    dp[i][j] =
+//                            ((i>0&&j>0&&s.charAt(i)==t.charAt(j))?dp[i-1][j-1]:0)
+//                            + ((i>0)?dp[i-1][j]:0);
+//                }
+//            }
+//
+//            return dp[s.length()-1][t.length()-1];
         }
     }
 }

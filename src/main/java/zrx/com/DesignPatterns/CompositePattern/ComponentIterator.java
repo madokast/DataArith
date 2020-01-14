@@ -5,7 +5,7 @@ import java.util.Stack;
 
 /**
  * Description
- * TODO
+ * ComponentIterator
  * <p>
  * Data
  * 12:16
