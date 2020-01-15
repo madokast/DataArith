@@ -527,4 +527,8 @@ public class MyArrayTools {
 
         return min;
     }
+
+    public static <T> List<T> asList(T...ts){
+        return new ArrayList<>(Arrays.asList(ts));
+    }
 }

@@ -11,6 +11,7 @@ import zrx.com.leetcode.Q0060.*;
 import zrx.com.leetcode.Q0080.*;
 import zrx.com.leetcode.Q0100.Q0115DistinctSubsequences;
 import zrx.com.leetcode.Q0120.*;
+import zrx.com.leetcode.Q0140.Q0140WordBreakII;
 import zrx.com.leetcode.Q0140.Q0152MaximumProductSubarray;
 import zrx.com.leetcode.Q0180.Q0188BestTimeToBuyAndSellStockIV;
 import zrx.com.leetcode.Q0180.Q0198HouseRobber;
@@ -34,6 +35,12 @@ import zrx.com.leetcode.utils.LeerCodeTest.TestForLeetCode;
  */
 
 public class AllTest {
+    @Test
+    public void test20200115(){
+        TestForLeetCode.happy(Q0139WordBreak.class);
+        TestForLeetCode.happy(Q0140WordBreakII.class);
+    }
+
     @Test
     public void test20200114(){
         TestForLeetCode.happy(Q0097InterleavingString.class);

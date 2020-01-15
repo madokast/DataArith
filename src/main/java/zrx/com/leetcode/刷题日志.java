@@ -9,6 +9,7 @@ import zrx.com.leetcode.Q0060.*;
 import zrx.com.leetcode.Q0080.*;
 import zrx.com.leetcode.Q0100.Q0115DistinctSubsequences;
 import zrx.com.leetcode.Q0120.*;
+import zrx.com.leetcode.Q0140.Q0140WordBreakII;
 import zrx.com.leetcode.Q0140.Q0152MaximumProductSubarray;
 import zrx.com.leetcode.Q0160.Q0167TwoSum2InputArrayIsSorted;
 import zrx.com.leetcode.Q0180.Q0188BestTimeToBuyAndSellStockIV;
@@ -18,6 +19,10 @@ import zrx.com.leetcode.Q0440.Q0454FourSumII;
 import zrx.com.leetcode.Q0560.Q0560SubarraySumEqualsK;
 import zrx.com.leetcode.Q0620.Q0628MaximumProductOfThreeNumbers;
 import zrx.com.leetcode.Q0680.Q0697DegreeOfAnArray;
+import zrx.com.leetcode.utils.LeerCodeTest.Question;
+import zrx.com.leetcode.utils.MyArrayTools;
+
+import java.util.List;
 
 /**
  * 2019年11月6日
@@ -148,9 +153,9 @@ import zrx.com.leetcode.Q0680.Q0697DegreeOfAnArray;
  *
  *
  * 139. Word Break
- *
+ * @see Q0139WordBreak
  * 140. Word Break II
- *
+ * @see zrx.com.leetcode.Q0140.Q0140WordBreakII
  * 174. Dungeon Game
  *
  * 213. House Robber II
@@ -158,6 +163,9 @@ import zrx.com.leetcode.Q0680.Q0697DegreeOfAnArray;
  */
 
 public class 刷题日志 {
+    private List<Class<? extends Question>> hardQuestion =
+            MyArrayTools.asList(Q0140WordBreakII.class);
+
     private Q0001TwoSum q0001TwoSum;
     private Q0003LongestSubstringWithoutRepeatingCharacters q0003LongestSubstringWithoutRepeatingCharacters;
     private Q0005LongestPalindromicSubstring q0005LongestPalindromicSubstring;
@@ -195,6 +203,8 @@ public class 刷题日志 {
     private Q0122BestTimeToBuyAndSellStockII q0122BestTimeToBuyAndSellStockII;
     private Q0123BestTimeToBuyAndSellStockIII q0123BestTimeToBuyAndSellStockIII;
     private Q0132PalindromePartitioningII q0132PalindromePartitioningII;
+    private Q0139WordBreak q0139WordBreak;
+    private Q0140WordBreakII q0140WordBreakII;
     private Q0152MaximumProductSubarray q0152MaximumProductSubarray;
     private Q0167TwoSum2InputArrayIsSorted q0167TwoSum2InputArrayIsSorted;
     private Q0188BestTimeToBuyAndSellStockIV q0188BestTimeToBuyAndSellStockIV;

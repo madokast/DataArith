@@ -8,6 +8,7 @@ import zrx.com.DesignPatterns.Factorys.AbstractFactoryPattern;
 import zrx.com.DesignPatterns.Factorys.FactoryPattern;
 import zrx.com.DesignPatterns.Factorys.SimpleFactory;
 import zrx.com.DesignPatterns.ObserverPatttern.OPUser;
+import zrx.com.DesignPatterns.ResponsibilityChainPattern.ResponsibilityChainPatternLearn;
 import zrx.com.DesignPatterns.bridgePattern.BridgePatternLearn;
 import zrx.com.DesignPatterns.strategyPpattern.LearnAndTest;
 import zrx.com.MultiThread.MyTools;
@@ -24,6 +25,11 @@ import zrx.com.MultiThread.MyTools;
  */
 
 public class Test {
+    @org.junit.Test
+    public void testResponsibilityChainPatternLearn(){
+        ResponsibilityChainPatternLearn.learn();
+    }
+
     @org.junit.Test
     public void BridgePatternLearnTest(){
         BridgePatternLearn.learn();

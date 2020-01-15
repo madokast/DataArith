@@ -134,12 +134,46 @@ public class Q0132PalindromePartitioningII implements Question {
 
             System.out.println("错误答案1：" + minCut0(s));
             System.out.println("错误答案2：" + minCut1(s));
+            System.out.println("快速解法：" + minCut2(s));
+
 //            System.out.println("dpp = " + Arrays.deepToString(dpp));
             System.out.println("dp = " + Arrays.toString(dp));
 
             return dp[dp.length-1];
         }
 
+        //急速法
+        //Runtime: 4 ms, faster than 96.72% of Java online submissions for Palindrome Partitioning II.
+        //Memory Usage: 34.9 MB, less than 100.00% of Java online submissions for Palindrome Partitioning II.
+        private int minCut2(String s){
+            int[] dp = new int[s.length()+1];
+            Arrays.fill(dp,s.length()+1);
+            dp[0] = -1;
+//            dp[1] = 0;
+
+            char[] chars = s.toCharArray();
+
+            int len;
+            for (int i = 0; i < chars.length; i++) {
+                len=0;
+                while (i+len<chars.length&&i-len>=0&&chars[i+len]==chars[i-len]){
+
+                    dp[i+len+1] = Math.min(dp[i+len+1],dp[i-len]+1);
+                    len++;
+                }
+
+                len = 0;
+                while (i-len>=0&&i+len+1<chars.length&&chars[i-len]==chars[i+len+1]){
+                   dp[i+len+2] = Math.min(dp[i+len+2],dp[i-len]+1);
+
+                    len++;
+                }
+            }
+
+            return dp[dp.length-1];
+        }
+
+        //错误答案
         private int minCut1(String s){
             if(s==null||s.length()==0)
                 return 0;
