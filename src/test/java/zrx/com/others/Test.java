@@ -20,6 +20,15 @@ import java.util.concurrent.ConcurrentLinkedDeque;
 
 public class Test {
     @org.junit.Test
+    public void testOut(){
+//        int[][] arr = new int[2][10];
+//
+//        arr[4] = new int[] {1,2,3};
+//
+//
+    }
+
+    @org.junit.Test
     public void testMonotonicStack(){
         MonotonicStack.learn();
     }

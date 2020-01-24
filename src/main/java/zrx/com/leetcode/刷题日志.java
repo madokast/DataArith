@@ -12,6 +12,7 @@ import zrx.com.leetcode.Q0120.*;
 import zrx.com.leetcode.Q0140.Q0140WordBreakII;
 import zrx.com.leetcode.Q0140.Q0152MaximumProductSubarray;
 import zrx.com.leetcode.Q0160.Q0167TwoSum2InputArrayIsSorted;
+import zrx.com.leetcode.Q0160.Q0174DungeonGame;
 import zrx.com.leetcode.Q0180.Q0188BestTimeToBuyAndSellStockIV;
 import zrx.com.leetcode.Q0180.Q0198HouseRobber;
 import zrx.com.leetcode.Q0220.Q0238ProductOfArrayExceptSelf;
@@ -157,9 +158,11 @@ import java.util.List;
  * 140. Word Break II
  * @see zrx.com.leetcode.Q0140.Q0140WordBreakII
  * 174. Dungeon Game
- *
+ * @see zrx.com.leetcode.Q0160.Q0174DungeonGame
  * 213. House Robber II
  *
+ *
+ * 
  */
 
 public class 刷题日志 {
@@ -207,6 +210,7 @@ public class 刷题日志 {
     private Q0140WordBreakII q0140WordBreakII;
     private Q0152MaximumProductSubarray q0152MaximumProductSubarray;
     private Q0167TwoSum2InputArrayIsSorted q0167TwoSum2InputArrayIsSorted;
+    private Q0174DungeonGame q0174DungeonGame;
     private Q0188BestTimeToBuyAndSellStockIV q0188BestTimeToBuyAndSellStockIV;
     private Q0198HouseRobber q0198HouseRobber;
     private Q0238ProductOfArrayExceptSelf q0238ProductOfArrayExceptSelf;
