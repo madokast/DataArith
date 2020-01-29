@@ -19,6 +19,67 @@ import java.util.Objects;
 
 public class MyArrayTools {
 
+    public static void reverse(int[] arr){
+//        int[] ret = new int[arr.length];
+//        for (int i = 0; i < ret.length; i++) {
+//            ret[i] = arr[arr.length-i-1];
+//        }
+
+        for (int i = 0; i <= arr.length/2; i++) {
+            swap(arr,i,arr.length-i-1);
+        }
+    }
+
+    /**
+     * 堆排序算法
+     *
+     * @param arr 堆
+     */
+    public static void heapSort(int[] arr) {
+        heapSort(arr, arr.length);
+    }
+
+    public static void heapSort(int[] arr, int endExcluding) {
+        if (endExcluding <= 1)
+            return;
+
+        //首选需要成堆，这里是大顶堆
+
+        //找到最大非叶子节点
+        int maxNonLeafNodeIndex = endExcluding / 2 - 1;
+
+        //对于每个非叶子节点。处理。使得成堆
+        for (int nonLeafNodeIndex = maxNonLeafNodeIndex; nonLeafNodeIndex >= 0; nonLeafNodeIndex--) {
+            //他的左孩子和右孩子-注意是索引
+            int leftChild = nonLeafNodeIndex * 2 + 1;
+            int rightChild = leftChild + 1;
+
+            //如果只有左孩子
+            if (rightChild == endExcluding) {
+                if (arr[nonLeafNodeIndex] < arr[leftChild])
+                    swap(arr, nonLeafNodeIndex, leftChild);
+            }
+            //还有右孩子
+            else {
+                //左孩子较大
+                if (arr[leftChild] > arr[rightChild]) {
+                    if (arr[nonLeafNodeIndex] < arr[leftChild])
+                        swap(arr, nonLeafNodeIndex, leftChild);
+                }
+                //右孩子较大
+                else {
+                    if (arr[nonLeafNodeIndex] < arr[rightChild])
+                        swap(arr, nonLeafNodeIndex, rightChild);
+                }
+            }
+        }
+
+        //成堆结束，把堆顶元素和末尾元素互换
+        swap(arr, 0, endExcluding - 1);
+
+        heapSort(arr, endExcluding - 1);
+    }
+
     public static void quickSort2(int[] arr) {
         Objects.requireNonNull(arr);
         quickSort2(arr, 0, arr.length - 1);
@@ -30,16 +91,16 @@ public class MyArrayTools {
             int pointToPivot = start;
 
             for (int i = start + 1; i <= end; i++) {
-                if(arr[i]<pivot){
+                if (arr[i] < pivot) {
                     pointToPivot++;
-                    swap(arr,i,pointToPivot);
+                    swap(arr, i, pointToPivot);
                 }
             }
 
-            swap(arr,pointToPivot,start);
+            swap(arr, pointToPivot, start);
 
-            quickSort2(arr,start,pointToPivot-1);
-            quickSort2(arr,pointToPivot+1,end);
+            quickSort2(arr, start, pointToPivot - 1);
+            quickSort2(arr, pointToPivot + 1, end);
         }
     }
 
@@ -504,11 +565,11 @@ public class MyArrayTools {
         return 0;
     }
 
-    public static int max(int...ints){
+    public static int max(int... ints) {
         Objects.requireNonNull(ints);
         int max = ints[0];
         for (int i = 1; i < ints.length; i++) {
-            if(ints[i]>max){
+            if (ints[i] > max) {
                 max = ints[i];
             }
         }
@@ -516,11 +577,11 @@ public class MyArrayTools {
         return max;
     }
 
-    public static int min(int...ints){
+    public static int min(int... ints) {
         Objects.requireNonNull(ints);
         int min = ints[0];
         for (int i = 1; i < ints.length; i++) {
-            if(ints[i]<min){
+            if (ints[i] < min) {
                 min = ints[i];
             }
         }
@@ -528,7 +589,7 @@ public class MyArrayTools {
         return min;
     }
 
-    public static <T> List<T> asList(T...ts){
+    public static <T> List<T> asList(T... ts) {
         return new ArrayList<>(Arrays.asList(ts));
     }
 }

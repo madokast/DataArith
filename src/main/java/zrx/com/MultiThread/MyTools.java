@@ -1,6 +1,9 @@
 package zrx.com.MultiThread;
 
+import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.function.Consumer;
+import java.util.stream.Stream;
 
 /**
  * Description
@@ -15,29 +18,48 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class MyTools {
 
-    public static void joinAll(Thread...threads){
+    public static void justDoIt(int times, Runnable runnable){
+        Stream.generate(Math::random).limit(times).forEach(r->runnable.run());
+    }
+
+    public static void joinAll(Thread... threads) {
         try {
             for (Thread thread : threads) {
                 thread.join();
             }
-        }catch (InterruptedException e){e.printStackTrace();}
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void joinAll(long time,Thread...threads){
+    public static void joinAll(long time, Thread... threads) {
         try {
             for (Thread thread : threads) {
                 thread.join(time);
             }
-        }catch (InterruptedException e){e.printStackTrace();}
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
-    private static final long startTime  = System.currentTimeMillis();
-    public static void printMsgWithThreadAndTime(String msg){
+    private static final long startTime = System.currentTimeMillis();
+
+    public static void printMsgWithThreadAndTime(String msg) {
         final long time = System.currentTimeMillis() - startTime;
-        System.out.println("["+Thread.currentThread().getName()+"]: " + String.format("%s",msg)+ "[" + String.format("%5d",(int)time) + "]");
+        System.out.println("[" + Thread.currentThread().getName() + "]: " + String.format("%s", msg) + "[" + String.format("%6d", (int) time) + "]");
     }
 
-    public static Thread runItInThread(Runnable r,boolean daemon){
+    public static void infoWithTime(String msg) {
+        final long time = System.currentTimeMillis() - startTime;
+        System.out.println("[" + String.format("%6d", (int) time) + "]" + msg);
+    }
+
+    public static String pastTime() {
+        final long time = System.currentTimeMillis() - startTime;
+        return "[" + String.format("%6d", (int) time) + "]";
+    }
+
+    public static Thread runItInThread(Runnable r, boolean daemon) {
         Thread thread = new Thread(r);
         thread.setDaemon(daemon);
         thread.start();
@@ -45,7 +67,7 @@ public class MyTools {
         return thread;
     }
 
-    public static Thread runItInThread(Runnable r,String name,boolean daemon){
+    public static Thread runItInThread(Runnable r, String name, boolean daemon) {
         Thread thread = new Thread(r);
         thread.setName(name);
         thread.start();
@@ -58,7 +80,7 @@ public class MyTools {
      * 打印调用这个方法的前一个方法名
      * 类名+方法名
      */
-    public static void printCurrentMethod(boolean isErr){
+    public static void printCurrentMethod(boolean isErr) {
         final StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
         final StackTraceElement traceElement = stackTrace[2];
 
@@ -68,14 +90,14 @@ public class MyTools {
                 append("::").
                 append(traceElement.getMethodName());
 
-        if(isErr){
+        if (isErr) {
             System.err.println(sb.toString());
-        }else {
+        } else {
             System.out.println(sb.toString());
         }
     }
 
-    public static void printCurrentMethod(boolean isErr,String msg){
+    public static void printCurrentMethod(boolean isErr, String msg) {
         final StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
         final StackTraceElement traceElement = stackTrace[2];
 
@@ -85,10 +107,10 @@ public class MyTools {
                 append("::").
                 append(traceElement.getMethodName());
 
-        if(isErr){
+        if (isErr) {
             System.err.println(sb.toString());
             System.err.println(msg);
-        }else {
+        } else {
             System.out.println(sb.toString());
             System.out.println(msg);
         }
@@ -98,33 +120,35 @@ public class MyTools {
 
     /**
      * 自己睡ms毫秒
+     *
      * @param ms 毫秒
      */
-    public static void sleepSelf(int ms){
-        sleepSelf((long)ms);
+    public static void sleepSelf(int ms) {
+        sleepSelf((long) ms);
     }
 
-    public static void sleepSelf(long ms){
+    public static void sleepSelf(long ms) {
         try {
             Thread.sleep(ms);
-        }catch (InterruptedException e){
+        } catch (InterruptedException e) {
 //            e.printStackTrace();
         }
     }
 
     /**
      * 一次大约0.01s。不会抛出异常
+     *
      * @param times 次数
      */
-    public static void hardWork(int times){
+    public static void hardWork(int times) {
         for (int i = 0; i < times; i++) {
             int sum = 0;
-            for (int j = 0; j < (Integer.MAX_VALUE - times)/100 ; j++) {
-                sum+=j;
+            for (int j = 0; j < (Integer.MAX_VALUE - times) / 100; j++) {
+                sum += j;
             }
-            if(sum==0){
+            if (sum == 0) {
                 System.err.println("hardWork(int times)这不可能吧");
-            }else {
+            } else {
                 return;
             }
         }

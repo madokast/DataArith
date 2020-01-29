@@ -28,6 +28,14 @@
             <version>18.0.0</version>
             <scope>compile</scope>
         </dependency>
+
+<!--        反射工具-->
+        <dependency>
+            <groupId>org.reflections</groupId>
+            <artifactId>reflections</artifactId>
+            <version>0.9.11</version>
+        </dependency>
+
     </dependencies>
 
 

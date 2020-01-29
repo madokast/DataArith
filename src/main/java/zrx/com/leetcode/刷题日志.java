@@ -162,10 +162,10 @@ import java.util.List;
  * 213. House Robber II
  *
  *
- * 
+ *
  */
 
-public class 刷题日志 {
+public class 刷题日志{
     private List<Class<? extends Question>> hardQuestion =
             MyArrayTools.asList(Q0140WordBreakII.class);
 
