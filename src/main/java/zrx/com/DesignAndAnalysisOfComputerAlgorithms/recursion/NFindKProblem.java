@@ -24,7 +24,7 @@ import java.util.stream.Stream;
 
 public class NFindKProblem {
     @TestForDesignAndAnalysisOfComputerAlgorithms(value = "从无序集合中寻找第k大的元素",
-            detailInfo = "使用堆排序")
+            detailInfo = "使用堆排序",page = 33)
     public void selectK() {
         MyTools.justDoIt(5,this::selectKRun);
     }
@@ -68,7 +68,7 @@ public class NFindKProblem {
                     "堆仅仅使用数组，且不使用指针",
                     "使用堆的目的是将最大（或者最小）的节点放在最前面",
                     "而不是搜索元素，所以平衡二叉树和堆有区别"
-            })
+            },page = 33)
     public void heapSort() {
         Stream.generate(Math::random).limit(5).forEach(e->{
             int[] randomIntArray = MyRandom.randomIntArray(100, 20);

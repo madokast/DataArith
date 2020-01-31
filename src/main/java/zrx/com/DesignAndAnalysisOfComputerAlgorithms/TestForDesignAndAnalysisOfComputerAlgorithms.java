@@ -14,4 +14,6 @@ import java.lang.annotation.Target;
 public @interface TestForDesignAndAnalysisOfComputerAlgorithms {
     String value();
     String[] detailInfo() default {};
+    int repeat() default 1;
+    int page();
 }

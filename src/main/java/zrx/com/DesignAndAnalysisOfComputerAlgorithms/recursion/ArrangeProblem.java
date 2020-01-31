@@ -20,12 +20,12 @@ import java.util.Objects;
  */
 
 public class ArrangeProblem {
-    @TestForDesignAndAnalysisOfComputerAlgorithms("这是一个空测试")
+    @TestForDesignAndAnalysisOfComputerAlgorithms(value = "这是一个空测试",page = 0)
     public void run() {
         System.out.println("hello DesignAndAnalysisOfComputerAlgorithms");
     }
 
-    @TestForDesignAndAnalysisOfComputerAlgorithms("排列问题，递归解法")
+    @TestForDesignAndAnalysisOfComputerAlgorithms(value = "排列问题，递归解法",page = 18)
     public void arrange() {
         List<Integer> list = new ArrayList<>();
         for (int i = 1; i < 4; i++) {

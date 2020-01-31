@@ -6,9 +6,10 @@ import zrx.com.MultiThread.MyTools;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.Arrays;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
@@ -46,42 +47,58 @@ public class PackageTestAndInfo {
 
 //        System.out.println("typesAnnotatedWith = " + methodsAnnotatedWith);
 
-        methodsAnnotatedWith.forEach(method -> {
-            //获得这个方法的注解TestForDesignAndAnalysisOfComputerAlgorithms中的值
-            TestForDesignAndAnalysisOfComputerAlgorithms annotation =
-                    (TestForDesignAndAnalysisOfComputerAlgorithms) method.getAnnotation(ANNOTATION_CLASS);
+        List<Method> methodsAnnotatedWithList = new ArrayList<>(methodsAnnotatedWith);
+        methodsAnnotatedWithList.sort(Comparator.comparingInt(m ->
+                ((TestForDesignAndAnalysisOfComputerAlgorithms) m.getAnnotation(ANNOTATION_CLASS)).page()
+        ));
+
+        methodsAnnotatedWithList.forEach(method -> {
+        //获得这个方法的注解TestForDesignAndAnalysisOfComputerAlgorithms中的值
+        TestForDesignAndAnalysisOfComputerAlgorithms annotation =
+                (TestForDesignAndAnalysisOfComputerAlgorithms) method.getAnnotation(ANNOTATION_CLASS);
 
 //            MyTools.printMsgWithThreadAndTime("[" + method + "]" + annotation.value());
-            System.out.println("[" +
-                    (method.toString().substring(rootPackage.getName().toString().length(), method.toString().length() - 2)) + "]" +
-                    MyTools.pastTime() + "\n" +
-                    "《" + annotation.value() + "》");
-            if (annotation.detailInfo().length > 0) {
-                Arrays.stream(annotation.detailInfo()).forEach(System.out::println);
-            }
+        System.out.println("[" +
+                (method.toString().substring(rootPackage.getName().toString().length(), method.toString().length() - 2)) + "]" +
+                MyTools.pastTime() + "\n" +
+                "《" + annotation.value() + "》--p." + annotation.page());
+        if (annotation.detailInfo().length > 0) {
+            Arrays.stream(annotation.detailInfo()).forEach(System.out::println);
+        }
 
 
-            //获得这个方法所在的类
-            Class<?> thisClass = method.getDeclaringClass();
+        //获得这个方法所在的类
+        Class<?> thisClass = method.getDeclaringClass();
 
-            try {
-                //实例化类
-                Constructor<?> constructor = thisClass.getConstructor(null);
-                Object instance = constructor.newInstance();
+        try {
+            //实例化类
+            Constructor<?> constructor = thisClass.getConstructor(null);
+            Object instance = constructor.newInstance();
 
+            //重复
+            MyTools.justDoIt(annotation.repeat(), () -> {
                 //执行方法
-                Object ret = method.invoke(instance);
+                Object ret = null;
+                try {
+                    ret = method.invoke(instance);
+                } catch (IllegalAccessException | InvocationTargetException e) {
+                    System.err.println("测试" + method + "出现异常，原因：");
+                    e.printStackTrace();
+                }
 
                 if (ret != null)
                     System.out.println("return: " + ret);
-            } catch (Exception e) {
-                System.err.println("测试" + method + "出现异常，原因：");
-                e.printStackTrace();
-            }
-
-            System.out.println();
-        });
+            });
 
 
-    }
+        } catch (Exception e) {
+            System.err.println("测试" + method + "出现异常，原因：");
+            e.printStackTrace();
+        }
+
+        System.out.println();
+    });
+
+
+}
 }
