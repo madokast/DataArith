@@ -19,6 +19,12 @@ import java.util.concurrent.ConcurrentLinkedDeque;
  */
 
 public class Test {
+
+    @org.junit.Test
+    public void deepInComing(){
+        MyTools.infoWithTime("deepin更新");
+    }
+
     @org.junit.Test
     public void testOut(){
 //        int[][] arr = new int[2][10];
