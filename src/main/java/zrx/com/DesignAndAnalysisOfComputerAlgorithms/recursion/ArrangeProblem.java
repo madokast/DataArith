@@ -20,18 +20,22 @@ import java.util.Objects;
  */
 
 public class ArrangeProblem {
+
     @TestForDesignAndAnalysisOfComputerAlgorithms(value = "这是一个空测试",page = 0)
-    public void run() {
-        System.out.println("hello DesignAndAnalysisOfComputerAlgorithms");
+    public String run() {
+        return "hello DesignAndAnalysisOfComputerAlgorithms";
     }
 
     @TestForDesignAndAnalysisOfComputerAlgorithms(value = "排列问题，递归解法",page = 18)
-    public void arrange() {
+    public String arrange() {
+        StringBuilder stringBuilder = new StringBuilder();
         List<Integer> list = new ArrayList<>();
         for (int i = 1; i < 4; i++) {
             list.add(i);
-            System.out.println("对" + list + "的排列：" + arrange(list));
+            stringBuilder.append("对").append(list).append("的排列：").append(arrange(list)).append("\n");
         }
+
+        return stringBuilder.toString();
     }
 
     /**

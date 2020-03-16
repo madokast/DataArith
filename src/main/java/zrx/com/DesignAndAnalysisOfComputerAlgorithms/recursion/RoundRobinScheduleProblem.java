@@ -1,5 +1,6 @@
 package zrx.com.DesignAndAnalysisOfComputerAlgorithms.recursion;
 
+import zrx.com.DesignAndAnalysisOfComputerAlgorithms.StringBuilderThreadLocalUtils;
 import zrx.com.DesignAndAnalysisOfComputerAlgorithms.TestForDesignAndAnalysisOfComputerAlgorithms;
 
 import java.util.ArrayList;
@@ -21,14 +22,16 @@ import java.util.Map;
 public class RoundRobinScheduleProblem {
 
     @TestForDesignAndAnalysisOfComputerAlgorithms(value = "循环赛日程表问题", page = 43)
-    public void solve() {
+    public String solve() {
         for (int i = 1; i < 4; i++) {
-            System.out.println("k = "+ i);
-            solve(i);
+            StringBuilderThreadLocalUtils.appendLine("k = "+ i);
+            StringBuilderThreadLocalUtils.appendLine(solve(i));
         }
+
+        return StringBuilderThreadLocalUtils.toStringAndClear();
     }
 
-    private void solve(int k) {
+    private String solve(int k) {
         List<int[]> ans = new ArrayList<>();
         int number = (int) Math.pow(2, k);
 //        System.out.println("number = " + number);
@@ -73,7 +76,9 @@ public class RoundRobinScheduleProblem {
         }
 
         for (int i = 0; i < ans.size(); i++) {
-            System.out.println(i + " " + Arrays.toString(ans.get(i)));
+            StringBuilderThreadLocalUtils.appendLine(i + " " + Arrays.toString(ans.get(i)));
         }
+
+        return StringBuilderThreadLocalUtils.toStringAndClear();
     }
 }

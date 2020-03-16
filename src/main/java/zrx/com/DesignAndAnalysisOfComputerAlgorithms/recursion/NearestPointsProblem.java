@@ -21,10 +21,13 @@ public class NearestPointsProblem {
             "平面上n个点，找出最近的一对",
             "使用分治法，关键是处理分别属于不同边界上的点"
     },repeat = 5, page = 42)
-    public void solve() {
+    public String solve() {
+        StringBuilder stringBuilder =  new StringBuilder();
         Point[] points = Point.randomPoint(1000);
-        System.out.println("蛮力解法答案：" + nearestDistanceForce(points));
-        System.out.println("递归解法答案：" + nearestDistanceRecursion(points));
+        stringBuilder.append("蛮力解法答案：").append(nearestDistanceForce(points)).append("\n");
+        stringBuilder.append("递归解法答案：").append(nearestDistanceRecursion(points)).append("\n");
+
+        return stringBuilder.toString();
     }
 
     private double nearestDistanceRecursion(Point[] points){

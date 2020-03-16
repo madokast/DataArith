@@ -1,5 +1,6 @@
 package zrx.com.DesignAndAnalysisOfComputerAlgorithms.recursion;
 
+import zrx.com.DesignAndAnalysisOfComputerAlgorithms.StringBuilderThreadLocalUtils;
 import zrx.com.DesignAndAnalysisOfComputerAlgorithms.TestForDesignAndAnalysisOfComputerAlgorithms;
 import zrx.com.MultiThread.MyTools;
 import zrx.com.leetcode.utils.MyArrayTools;
@@ -24,12 +25,8 @@ import java.util.stream.Stream;
 
 public class NFindKProblem {
     @TestForDesignAndAnalysisOfComputerAlgorithms(value = "从无序集合中寻找第k大的元素",
-            detailInfo = "使用堆排序",page = 33)
-    public void selectK() {
-        MyTools.justDoIt(5,this::selectKRun);
-    }
-
-    public void selectKRun(){
+            detailInfo = "使用堆排序",page = 33,repeat = 5)
+    public String selectKRun(){
         int k = MyRandom.nextInt(18)+1;
         int[] randomIntArray = MyRandom.randomIntArray(100, 20);
         int[] randomIntArrayCopy = Arrays.copyOf(randomIntArray,randomIntArray.length);
@@ -52,11 +49,13 @@ public class NFindKProblem {
 
         int k2 = randomIntArrayCopy[k-1];
 
-        System.out.println( "数组"+ Arrays.toString(randomIntArrayCopy) +"，第"+ k  + "大的数是" + k1);
+        StringBuilderThreadLocalUtils.appendLine( "数组"+ Arrays.toString(randomIntArrayCopy) +"，第"+ k  + "大的数是" + k1);
         if(k1!=k2)
-            System.err.println("回答错误");
+            StringBuilderThreadLocalUtils.appendLine("回答错误");
         else
-            System.out.println("回答正确");
+            StringBuilderThreadLocalUtils.appendLine("回答正确");
+
+        return StringBuilderThreadLocalUtils.toStringAndClear();
     }
 
     @TestForDesignAndAnalysisOfComputerAlgorithms(value = "堆排序",
@@ -69,18 +68,22 @@ public class NFindKProblem {
                     "使用堆的目的是将最大（或者最小）的节点放在最前面",
                     "而不是搜索元素，所以平衡二叉树和堆有区别"
             },page = 33)
-    public void heapSort() {
+    public String heapSort() {
+        StringBuilder stringBuilder = new StringBuilder();
+
         Stream.generate(Math::random).limit(5).forEach(e->{
             int[] randomIntArray = MyRandom.randomIntArray(100, 20);
-            System.out.println("randomArray = " + Arrays.toString(randomIntArray));
+            stringBuilder.append("randomArray = ").append(Arrays.toString(randomIntArray)).append("\n");
             MyArrayTools.heapSort(randomIntArray);
-            System.out.println("sortedArray = " + Arrays.toString(randomIntArray));
+            stringBuilder.append("sortedArray = ").append(Arrays.toString(randomIntArray)).append("\n");
             if(MyArrayTools.isSorted(randomIntArray)){
-                System.out.println("排序成功");
+                stringBuilder.append("排序成功").append("\n");
             }
             else {
-                System.err.println("排序失败!!!");
+                stringBuilder.append("排序失败!!!").append("\n");
             }
         });
+
+        return stringBuilder.toString();
     }
 }

@@ -140,7 +140,8 @@ public class MyTools {
      *
      * @param times 次数
      */
-    public static void hardWork(int times) {
+    public static int hardWork(int times) {
+        int sumSum = 0;
         for (int i = 0; i < times; i++) {
             int sum = 0;
             for (int j = 0; j < (Integer.MAX_VALUE - times) / 100; j++) {
@@ -148,9 +149,10 @@ public class MyTools {
             }
             if (sum == 0) {
                 System.err.println("hardWork(int times)这不可能吧");
-            } else {
-                return;
             }
+            sumSum+=sum;
         }
+
+        return sumSum;
     }
 }

@@ -9,6 +9,7 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -44,61 +45,88 @@ public class PackageTestAndInfo {
         Set<Method> methodsAnnotatedWith = new Reflections(rootPackage.getName(), new MethodAnnotationsScanner())
                 .getMethodsAnnotatedWith(ANNOTATION_CLASS);
 
-
-//        System.out.println("typesAnnotatedWith = " + methodsAnnotatedWith);
-
-        List<Method> methodsAnnotatedWithList = new ArrayList<>(methodsAnnotatedWith);
-        methodsAnnotatedWithList.sort(Comparator.comparingInt(m ->
-                ((TestForDesignAndAnalysisOfComputerAlgorithms) m.getAnnotation(ANNOTATION_CLASS)).page()
-        ));
-
-        methodsAnnotatedWithList.forEach(method -> {
-        //获得这个方法的注解TestForDesignAndAnalysisOfComputerAlgorithms中的值
-        TestForDesignAndAnalysisOfComputerAlgorithms annotation =
-                (TestForDesignAndAnalysisOfComputerAlgorithms) method.getAnnotation(ANNOTATION_CLASS);
-
-//            MyTools.printMsgWithThreadAndTime("[" + method + "]" + annotation.value());
-        System.out.println("[" +
-                (method.toString().substring(rootPackage.getName().toString().length(), method.toString().length() - 2)) + "]" +
-                MyTools.pastTime() + "\n" +
-                "《" + annotation.value() + "》--p." + annotation.page());
-        if (annotation.detailInfo().length > 0) {
-            Arrays.stream(annotation.detailInfo()).forEach(System.out::println);
-        }
+        //2020年2月18日 采用多线程计算，不再排序
+//        //对方法排序，按照TestForDesignAndAnalysisOfComputerAlgorithms 的页数信息
+//        List<Method> methodsAnnotatedWithList = new ArrayList<>(methodsAnnotatedWith);
+//        methodsAnnotatedWithList.sort(Comparator.comparingInt(m ->
+//                ((TestForDesignAndAnalysisOfComputerAlgorithms) m.getAnnotation(ANNOTATION_CLASS)).page()
+//        ));
 
 
-        //获得这个方法所在的类
-        Class<?> thisClass = method.getDeclaringClass();
-
-        try {
-            //实例化类
-            Constructor<?> constructor = thisClass.getConstructor(null);
-            Object instance = constructor.newInstance();
-
-            //重复
-            MyTools.justDoIt(annotation.repeat(), () -> {
-                //执行方法
-                Object ret = null;
-                try {
-                    ret = method.invoke(instance);
-                } catch (IllegalAccessException | InvocationTargetException e) {
-                    System.err.println("测试" + method + "出现异常，原因：");
-                    e.printStackTrace();
-                }
-
-                if (ret != null)
-                    System.out.println("return: " + ret);
-            });
+        java.util.concurrent.ConcurrentHashMap<Integer, String> map =
+                new ConcurrentHashMap<>(methodsAnnotatedWith.size());
 
 
-        } catch (Exception e) {
-            System.err.println("测试" + method + "出现异常，原因：");
-            e.printStackTrace();
-        }
+        methodsAnnotatedWith.stream().parallel()
+                .forEach(method -> {
+                            //因为是多线程，所以信息不直接打印，先存起来
+                            StringBuilder stringBuilder = new StringBuilder();
 
-        System.out.println();
-    });
+                            //获得这个方法的注解TestForDesignAndAnalysisOfComputerAlgorithms中的值
+                            TestForDesignAndAnalysisOfComputerAlgorithms annotation =
+                                    (TestForDesignAndAnalysisOfComputerAlgorithms) method.getAnnotation(ANNOTATION_CLASS);
+
+                            //[erAlgorithms.recursion.ArrangeProblem.run][     0]
+                            //《这是一个空测试》--p.0
+                            stringBuilder.append("[")
+                                    .append(method.toString().substring(rootPackage.getName().toString().length(), method.toString().length() - 2))
+                                    .append("]")
+                                    .append(MyTools.pastTime())
+                                    .append("\n").append("《")
+                                    .append(annotation.value())
+                                    .append("》--p.")
+                                    .append(annotation.page())
+                                    .append("\n");
+
+                            //打印详细信息
+                            if (annotation.detailInfo().length > 0) {
+                                Arrays.stream(annotation.detailInfo()).forEach(
+                                        info -> stringBuilder.append(info).append("\n"));
+                            }
 
 
-}
+                            //获得这个方法所在的类
+                            Class<?> thisClass = method.getDeclaringClass();
+
+                            try {
+                                //实例化类
+                                Constructor<?> constructor = thisClass.getConstructor(null);
+                                Object instance = constructor.newInstance();
+
+                                //重复
+                                MyTools.justDoIt(annotation.repeat(), () -> {
+                                    //执行方法
+                                    Object ret = null;
+                                    try {
+                                        ret = method.invoke(instance);
+                                    } catch (IllegalAccessException | InvocationTargetException e) {
+                                        System.err.println("测试" + method + "出现异常，原因：");
+                                        e.printStackTrace();
+                                    }
+
+                                    if (ret != null) {
+                                        stringBuilder.append(ret).append("\n");
+                                    }
+                                });
+
+
+                            } catch (Exception e) {
+                                System.err.println("测试" + method + "出现异常，原因：");
+                                e.printStackTrace();
+                            }
+
+
+                            stringBuilder.append("\n");
+
+                            //将测试数据存在map中
+                            map.put(annotation.page(), stringBuilder.toString());
+
+                        });
+
+        map.entrySet()
+                .stream()
+                .sorted(Comparator.comparingInt(Map.Entry::getKey))
+                .map(Map.Entry::getValue)
+                .forEach(System.out::println);
+    }
 }
